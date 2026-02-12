@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontes & Pameran Bonsai Nasional 2026 - Change of Seasons</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e7ede7',
+                            200: '#ceddce',
+                            300: '#a6c0a6',
+                            400: '#7fa27f',
+                            500: '#5f845f', 
+                            600: '#4a694a',
+                            700: '#3d543d',
+                            800: '#334433',
+                            900: '#2b382b',
+                        },
+                        gold: '#C5A059',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .music-control {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+        }
+        .leaf-icon {
+            color: #5f845f;
+            filter: drop-shadow(0 0 5px rgba(95, 132, 95, 0.3));
+        }
+        .btn-premium {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .btn-premium:hover::after {
+            width: 300%;
+            height: 300%;
+        }
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(43, 56, 43, 0.8), rgba(43, 56, 43, 0.6)), 
+                        url('https://lh3.googleusercontent.com/d/1TAiHusAEYpKNqdtzZhmTlCztE4iwRK_n=w1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 1px solid #ceddce;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 9px;
+            height: 9px;
+            background: #5f845f;
+            border-radius: 50%;
+        }
+        .price-card {
+            transition: transform 0.3s ease;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
+        }
+        .trophy-glow {
+            filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4));
+        }
+    </style>
+</head>
+<body class="bg-sage-50 text-sage-900 font-sans overflow-x-hidden">
+
+    <!-- Pemutar Musik -->
+    <div id="music-player" class="music-control">
+        <button onclick="toggleMusic()" class="w-12 h-12 rounded-full bg-sage-600 text-white shadow-lg flex items-center justify-center hover:bg-sage-700 transition-all duration-300">
+            <i id="music-icon" class="fas fa-music"></i>
+        </button>
+        <audio id="bg-music" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden hero-bg">
+        <div class="relative z-20 text-center px-4 py-20" data-aos="fade-up" data-aos-duration="1500">
+            <span class="inline-block text-sage-200 tracking-[0.4em] uppercase text-xs md:text-sm mb-6 font-semibold">Nasional Exhibition</span>
+            
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight">
+                KONTES & PAMERAN <br> 
+                <span class="text-sage-200">BONSAI NASIONAL 2026</span>
+            </h1>
+            
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="w-12 h-[1px] bg-gold"></div>
+                <i class="fas fa-leaf text-gold text-sm"></i>
+                <div class="w-12 h-[1px] bg-gold"></div>
+            </div>
+            
+            <p class="font-serif italic text-2xl md:text-3xl text-sage-100 mb-4">"Change of Seasons"</p>
+            <p class="text-white/70 tracking-[0.2em] text-sm md:text-lg uppercase max-w-2xl mx-auto">Merawat Waktu, Menyambut Perubahan</p>
+            
+            <div class="mt-12">
+                <a href="#registration" class="inline-block px-10 py-4 bg-white text-sage-800 tracking-widest uppercase text-xs font-bold rounded-full transition-all duration-300 hover:bg-sage-100 btn-premium shadow-2xl">
+                    Daftar Sekarang
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute inset-0 bg-black/30 pointer-events-none"></div>
+    </header>
+
+    <!-- Countdown Section -->
+    <section id="countdown" class="py-20 px-4 bg-white relative -mt-10 mx-4 md:mx-auto max-w-5xl rounded-3xl shadow-xl z-30">
+        <div class="text-center">
+            <div data-aos="fade-down">
+                <h2 class="font-display text-2xl text-sage-800 mb-10 tracking-wider">Menghitung Hari Menuju Pembukaan</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-6 rounded-2xl bg-sage-50 border border-sage-100" data-aos="zoom-in" data-aos-delay="100">
+                    <span id="days" class="block text-4xl md:text-5xl font-display text-sage-700 mb-2">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-sage-400 font-black">Hari</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-sage-50 border border-sage-100" data-aos="zoom-in" data-aos-delay="200">
+                    <span id="hours" class="block text-4xl md:text-5xl font-display text-sage-700 mb-2">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-sage-400 font-black">Jam</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-sage-50 border border-sage-100" data-aos="zoom-in" data-aos-delay="300">
+                    <span id="minutes" class="block text-4xl md:text-5xl font-display text-sage-700 mb-2">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-sage-400 font-black">Menit</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-sage-50 border border-sage-100" data-aos="zoom-in" data-aos-delay="400">
+                    <span id="seconds" class="block text-4xl md:text-5xl font-display text-sage-700 mb-2">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-sage-400 font-black">Detik</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Acara -->
+    <section class="py-24 bg-sage-50 border-b border-sage-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="mb-16" data-aos="fade-up">
+                <i class="fas fa-seedling leaf-icon text-3xl mb-6"></i>
+                <h2 class="font-display text-3xl text-sage-800 mb-6">Informasi Pelaksanaan</h2>
+                <p class="text-sage-600 leading-relaxed max-w-2xl mx-auto italic font-serif">
+                    "Seni bonsai mengajarkan kita bahwa perubahan adalah bagian dari keindahan yang harus dirawat dengan penuh kesabaran."
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 text-left">
+                <div class="space-y-10" data-aos="fade-right">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-sage-600 shrink-0 shadow-md">
+                            <i class="far fa-calendar-check text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sage-800 uppercase tracking-widest text-sm mb-2">Tanggal Pelaksanaan</h4>
+                            <p class="text-sage-600 font-medium text-lg">19 - 28 April 2026</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://maps.app.goo.gl/k5ceCAHDtYCu7iLA6" target="_blank" class="flex items-start gap-5 group">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-sage-600 shrink-0 shadow-md group-hover:bg-sage-600 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-location-dot text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sage-800 uppercase tracking-widest text-sm mb-2">Lokasi Pameran</h4>
+                            <p class="text-sage-600 font-medium group-hover:text-sage-800 transition-colors">Plaza Asia Tasikmalaya</p>
+                            <p class="text-sage-500 text-xs leading-relaxed uppercase tracking-tighter">Area Parkir (Dekat TeeJay Waterpark)<br>Jl. HZ. Mustofa No. 326, Tasikmalaya</p>
+                            <span class="text-[10px] text-gold font-bold uppercase mt-2 block tracking-widest">Buka di Maps <i class="fas fa-arrow-right ml-1"></i></span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="h-72 md:h-full min-h-[300px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white relative group" data-aos="fade-left">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.251642823678!2d108.21989067510705!3d-7.325603772036737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e61543329623707%3A0x8e831611c03e670e!2sPlaza%20Asia%20Tasikmalaya!5e0!3m2!1sen!2sid!4v1715694800000!5m2!1sen!2sid" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                    <a href="https://maps.app.goo.gl/k5ceCAHDtYCu7iLA6" target="_blank" class="absolute inset-0 bg-sage-900/10 group-hover:bg-transparent transition-all duration-300"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jadwal Acara -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-gold tracking-[0.3em] uppercase text-xs font-bold mb-4 block">Agenda Kegiatan</span>
+                <h2 class="font-display text-3xl text-sage-800">Jadwal Acara</h2>
+            </div>
+
+            <div class="space-y-8 max-w-2xl mx-auto mb-16">
+                <div class="timeline-item" data-aos="fade-up">
+                    <span class="text-xs font-bold text-sage-400 uppercase tracking-widest">19 - 20 April 2026</span>
+                    <p class="text-sage-700 font-medium mt-1">Masuk Bursa</p>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up">
+                    <span class="text-xs font-bold text-sage-400 uppercase tracking-widest">20 - 21 April 2026</span>
+                    <p class="text-sage-700 font-medium mt-1">Penerimaan dan Pendaftaran Bonsai</p>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <span class="text-xs font-bold text-sage-400 uppercase tracking-widest">21 April 2026</span>
+                    <p class="text-sage-700 font-medium mt-1">Penataan dan Display Bonsai</p>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <span class="text-xs font-bold text-sage-400 uppercase tracking-widest">22, 23 & 24 April 2026</span>
+                    <p class="text-sage-700 font-medium mt-1 text-gold">Penjurian Utama</p>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <span class="text-xs font-bold text-sage-400 uppercase tracking-widest">24 April 2026</span>
+                    <p class="text-sage-700 font-medium mt-1">Penancapan Bendera</p>
+                </div>
+
+                <div class="timeline-item border-l-2 border-sage-600 bg-sage-50 p-6 rounded-r-xl" data-aos="fade-up">
+                    <span class="text-xs font-bold text-sage-600 uppercase tracking-widest">25 April 2026</span>
+                    <h4 class="text-sage-900 font-bold mt-1">Pembukaan Resmi Kontes & Pameran</h4>
+                    <p class="text-sage-600 text-sm mt-2 italic font-serif">Demo Bonsai bersama Junet Hani dan Yayat Hidayat</p>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <span class="text-xs font-bold text-sage-400 uppercase tracking-widest">25 - 28 April 2026</span>
+                    <p class="text-sage-800 font-bold mt-1 uppercase tracking-tighter">Pameran Nasional (TERBUKA UNTUK UMUM)</p>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <span class="text-xs font-bold text-sage-400 uppercase tracking-widest">28 April 2026</span>
+                    <p class="text-sage-700 font-medium mt-1">Pengambilan Pohon</p>
+                </div>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-sage-50 border border-sage-200 text-center relative" data-aos="zoom-in">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-sage-600 text-white text-[10px] uppercase font-bold rounded-full tracking-widest">
+                    Pemberitahuan
+                </div>
+                <p class="text-sage-600 text-sm font-serif italic leading-relaxed max-w-xl mx-auto">
+                    "Segala hal yang terjadi akibat Force Majeure di luar tanggung jawab kami sebagai pihak penyelenggara."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Pendaftaran (Harga) -->
+    <section class="py-24 bg-sage-100/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-3xl text-sage-800">Biaya Pendaftaran</h2>
+            </div>
+
+            <div class="mb-12 max-w-lg mx-auto" data-aos="zoom-in">
+                <div class="bg-sage-800 text-white p-8 rounded-[2.5rem] shadow-2xl text-center border-b-4 border-gold">
+                    <p class="font-display text-2xl mb-2">STAN BURSA</p>
+                    <div class="text-3xl font-bold">Rp. 2.500.000</div>
+                    <p class="text-white/60 text-[10px] mt-4 uppercase tracking-widest italic">Space Terbatas</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-3xl shadow-sm price-card border border-sage-200" data-aos="fade-up">
+                    <h5 class="text-sage-800 font-bold border-b border-sage-100 pb-4 mb-4 uppercase tracking-widest text-xs">Kelas Prospek</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between"><span>Small & Mame</span> <span class="font-bold">125k</span></li>
+                        <li class="flex justify-between"><span>Medium</span> <span class="font-bold">200k</span></li>
+                        <li class="flex justify-between"><span>Large</span> <span class="font-bold">300k</span></li>
+                        <li class="flex justify-between"><span>Extra Large</span> <span class="font-bold">350k</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl shadow-sm price-card border border-sage-200" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="text-sage-800 font-bold border-b border-sage-100 pb-4 mb-4 uppercase tracking-widest text-xs">Kelas Pratama</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between"><span>Small & Mame</span> <span class="font-bold">250k</span></li>
+                        <li class="flex justify-between"><span>Medium</span> <span class="font-bold">300k</span></li>
+                        <li class="flex justify-between"><span>Large</span> <span class="font-bold">350k</span></li>
+                        <li class="flex justify-between"><span>Extra Large</span> <span class="font-bold">400k</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl shadow-sm price-card border border-sage-200" data-aos="fade-up" data-aos-delay="200">
+                    <h5 class="text-sage-800 font-bold border-b border-sage-100 pb-4 mb-4 uppercase tracking-widest text-xs">Kelas Madya</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between"><span>Small & Mame</span> <span class="font-bold">300k</span></li>
+                        <li class="flex justify-between"><span>Medium</span> <span class="font-bold">400k</span></li>
+                        <li class="flex justify-between"><span>Large</span> <span class="font-bold">450k</span></li>
+                        <li class="flex justify-between"><span>Extra Large</span> <span class="font-bold">500k</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl shadow-sm price-card border border-sage-200" data-aos="fade-up" data-aos-delay="300">
+                    <h5 class="text-sage-800 font-bold border-b border-sage-100 pb-4 mb-4 uppercase tracking-widest text-xs">Kelas Utama</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between"><span>Small & Mame</span> <span class="font-bold">400k</span></li>
+                        <li class="flex justify-between"><span>Medium</span> <span class="font-bold">500k</span></li>
+                        <li class="flex justify-between"><span>Large</span> <span class="font-bold">550k</span></li>
+                        <li class="flex justify-between"><span>Extra Large</span> <span class="font-bold">600k</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Person Section -->
+            <div class="mt-20 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <a href="https://wa.me/6285724250573" target="_blank" class="bg-white p-6 rounded-2xl flex items-center gap-4 shadow-md border-l-4 border-sage-600 hover:shadow-lg transition-all group">
+                    <div class="w-12 h-12 bg-sage-50 rounded-full flex items-center justify-center text-sage-600 group-hover:bg-sage-600 group-hover:text-white transition-colors">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-sage-400 tracking-wider">Kontak Peserta</p>
+                        <h6 class="font-bold text-sage-800">Redi Kurnia</h6>
+                        <span class="text-sage-600 text-sm font-medium">0857 2425 0573</span>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/6282119408505" target="_blank" class="bg-white p-6 rounded-2xl flex items-center gap-4 shadow-md border-l-4 border-sage-600 hover:shadow-lg transition-all group">
+                    <div class="w-12 h-12 bg-sage-50 rounded-full flex items-center justify-center text-sage-600 group-hover:bg-sage-600 group-hover:text-white transition-colors">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-sage-400 tracking-wider">Kontak Bursa</p>
+                        <h6 class="font-bold text-sage-800">Ace</h6>
+                        <span class="text-sage-600 text-sm font-medium">0821 1940 8505</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trophy Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <i class="fas fa-trophy text-gold text-4xl mb-4 trophy-glow"></i>
+                <h2 class="font-display text-3xl text-sage-800 uppercase tracking-widest">Trophy Penghargaan</h2>
+                <div class="w-24 h-[1px] bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div class="bg-sage-50 p-8 rounded-[2rem] border border-sage-100 flex flex-col items-center group hover:bg-sage-800 hover:text-white transition-all duration-500 shadow-xl" data-aos="zoom-in">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:bg-gold transition-colors duration-500">
+                        <i class="fas fa-award text-gold text-2xl group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-display text-xl mb-2">BEST 10</h4>
+                    <p class="text-sage-500 text-xs uppercase tracking-[0.2em] group-hover:text-white/70">Setiap Kelas</p>
+                </div>
+
+                <div class="bg-sage-50 p-8 rounded-[2rem] border border-sage-100 flex flex-col items-center group hover:bg-sage-800 hover:text-white transition-all duration-500 shadow-xl" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:bg-gold transition-colors duration-500">
+                        <i class="fas fa-crown text-gold text-2xl group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-display text-xl mb-2">BEST IN CLASS</h4>
+                    <p class="text-sage-500 text-xs uppercase tracking-[0.2em] group-hover:text-white/70">Setiap Kelas</p>
+                </div>
+
+                <div class="bg-sage-50 p-8 rounded-[2rem] border border-sage-100 group hover:bg-sage-800 transition-all duration-500 shadow-xl" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-gold transition-colors">
+                        <i class="fas fa-leaf text-gold text-2xl group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-display text-xl mb-4 group-hover:text-white">BEST IN SPECIES</h4>
+                    <ul class="space-y-2 text-sm uppercase tracking-widest text-sage-600 group-hover:text-white/80 font-bold">
+                        <li>Anting Putri</li>
+                        <li>Ficus</li>
+                        <li>Sinensis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 max-w-2xl mx-auto" data-aos="fade-up">
+                <div class="relative p-[2px] rounded-[3rem] bg-gradient-to-r from-gold via-sage-400 to-gold overflow-hidden shadow-2xl">
+                    <div class="bg-sage-900 text-white p-10 rounded-[2.9rem] text-center">
+                        <i class="fas fa-star text-gold text-3xl mb-4 animate-pulse"></i>
+                        <h3 class="font-display text-3xl md:text-4xl tracking-[0.2em] text-gold mb-2 uppercase">Best In Show</h3>
+                        <p class="text-white/50 text-xs uppercase tracking-[0.5em]">The Ultimate Champion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Door Prize Section -->
+    <section class="py-24 bg-sage-900 text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-gold tracking-[0.4em] uppercase text-xs font-bold mb-4 block">Special Reward</span>
+                <h2 class="font-display text-3xl text-white tracking-widest">DOOR PRIZE</h2>
+                <div class="w-24 h-[1px] bg-gold mx-auto mt-4 opacity-50"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 text-center flex flex-col items-center group hover:bg-gold transition-all duration-500" data-aos="fade-up">
+                    <div class="w-20 h-20 bg-gold/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors">
+                        <i class="fas fa-motorcycle text-gold text-4xl group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-display text-2xl mb-2">SEPEDA MOTOR</h4>
+                    <div class="px-4 py-1 bg-white/10 rounded-full text-[10px] uppercase tracking-widest font-bold group-hover:bg-black/20">Khusus Peserta</div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 text-center flex flex-col items-center group hover:bg-gold transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-gold/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors">
+                        <i class="fas fa-bicycle text-gold text-4xl group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-display text-2xl mb-2">SEPEDA LISTRIK</h4>
+                    <div class="px-4 py-1 bg-white/10 rounded-full text-[10px] uppercase tracking-widest font-bold group-hover:bg-black/20">Khusus Bursa</div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 text-center flex flex-col items-center group hover:bg-gold transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-gold/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors">
+                        <i class="fas fa-hippo text-gold text-4xl group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-display text-2xl mb-2 uppercase">Kambing</h4>
+                    <p class="text-white/60 text-[10px] leading-relaxed group-hover:text-white/90 italic">
+                        Untuk peserta dengan bonsai terbanyak (Atas nama perorangan)
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <p class="text-gold italic font-serif text-lg tracking-wider">"Dan berbagai hadiah menarik lainnya..."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pendaftaran Section -->
+    <section id="registration" class="py-24 bg-sage-50 border-t border-sage-100">
+        <div class="max-w-xl mx-auto px-4">
+            <div class="bg-white p-8 md:p-12 rounded-[2rem] border border-sage-200 shadow-xl shadow-sage-900/5" data-aos="fade-up">
+                <div class="text-center mb-10">
+                    <h2 class="font-display text-2xl text-sage-800 mb-2 tracking-widest uppercase">Pendaftaran</h2>
+                    <div class="w-16 h-[1px] bg-gold mx-auto opacity-50"></div>
+                </div>
+
+                <form id="registration-form" class="space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-sage-700 uppercase tracking-[0.2em] ml-1">Nama Lengkap</label>
+                        <input type="text" id="reg-name" required class="w-full px-5 py-3 bg-sage-50 border border-sage-100 rounded-xl focus:ring-2 focus:ring-sage-400 outline-none transition-all placeholder:text-sage-300" placeholder="Nama Anda">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-sage-700 uppercase tracking-[0.2em] ml-1">Cabang PPBI</label>
+                        <input type="text" id="reg-branch" required class="w-full px-5 py-3 bg-sage-50 border border-sage-100 rounded-xl focus:ring-2 focus:ring-sage-400 outline-none transition-all placeholder:text-sage-300" placeholder="Contoh: PPBI Cabang Tasikmalaya">
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-sage-700 uppercase tracking-[0.2em] ml-1">WhatsApp</label>
+                            <input type="tel" id="reg-wa" required class="w-full px-5 py-3 bg-sage-50 border border-sage-100 rounded-xl focus:ring-2 focus:ring-sage-400 outline-none transition-all placeholder:text-sage-300" placeholder="08xxx">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-sage-700 uppercase tracking-[0.2em] ml-1">Kategori Utama</label>
+                            <select id="reg-category" required class="w-full px-5 py-3 bg-sage-50 border border-sage-100 rounded-xl focus:ring-2 focus:ring-sage-400 outline-none transition-all appearance-none cursor-pointer">
+                                <option value="peserta">Peserta Kontes</option>
+                                <option value="bursa">Bursa / Stan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Khusus Peserta -->
+                    <div id="participant-fields" class="space-y-5 transition-all duration-300">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-sage-700 uppercase tracking-[0.2em] ml-1">Kelas Bonsai</label>
+                                <select id="reg-class" class="w-full px-5 py-3 bg-sage-50 border border-sage-100 rounded-xl focus:ring-2 focus:ring-sage-400 outline-none transition-all appearance-none cursor-pointer">
+                                    <option value="Prospek">Prospek</option>
+                                    <option value="Pratama">Pratama</option>
+                                    <option value="Madya">Madya</option>
+                                    <option value="Utama">Utama</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-sage-700 uppercase tracking-[0.2em] ml-1">Ukuran</label>
+                                <select id="reg-size" class="w-full px-5 py-3 bg-sage-50 border border-sage-100 rounded-xl focus:ring-2 focus:ring-sage-400 outline-none transition-all appearance-none cursor-pointer">
+                                    <option value="Mame">Mame</option>
+                                    <option value="Small">Small</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Large">Large</option>
+                                    <option value="Extra Large">Extra Large</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-sage-700 uppercase tracking-[0.2em] ml-1">Jumlah Pohon</label>
+                            <input type="number" id="reg-count" min="1" value="1" class="w-full px-5 py-3 bg-sage-50 border border-sage-100 rounded-xl focus:ring-2 focus:ring-sage-400 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-sage-800 hover:bg-sage-900 text-white rounded-xl font-bold uppercase tracking-[0.3em] text-[10px] transition-all duration-300 shadow-xl shadow-sage-900/10 active:scale-95">
+                        Daftar Sekarang
+                    </button>
+                </form>
+
+                <!-- Informasi Rekening -->
+                <div class="mt-8 p-6 bg-sage-50 rounded-2xl border border-sage-100 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-university text-4xl text-sage-900"></i>
+                    </div>
+                    <p class="text-[10px] font-black text-sage-400 uppercase tracking-widest mb-3">Informasi Pembayaran</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm shrink-0">
+                            <span class="font-bold text-blue-600 text-xs italic">BCA</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sage-800 tracking-wider text-lg">0540 977 577</h4>
+                            <p class="text-sage-500 text-xs font-medium uppercase tracking-tighter">a/n Yudi Nasrudin</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-[9px] text-sage-400 italic leading-relaxed">
+                        *Harap lampirkan bukti transfer saat konfirmasi pendaftaran melalui WhatsApp.
+                    </p>
+                </div>
+                
+                <div id="reg-success" class="hidden text-center py-8">
+                    <div class="w-16 h-16 bg-sage-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check text-2xl"></i>
+                    </div>
+                    <p class="text-sage-800 font-bold uppercase tracking-widest text-sm">Pendaftaran Berhasil</p>
+                    <p class="text-sage-500 text-xs mt-2 italic">Menghubungkan ke WhatsApp...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-sage-900 text-sage-400 text-center border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="font-display text-xl text-white mb-4 tracking-[0.5em]">CHANGE OF SEASONS</h3>
+            <div class="w-12 h-[1px] bg-sage-700 mx-auto mb-8"></div>
+            <p class="text-[9px] uppercase tracking-[0.4em] opacity-50">
+                &copy; 2026 PPBI Cabang Tasikmalaya <br>
+                Kontes & Pameran Bonsai Nasional
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-back'
+        });
+
+        const categorySelect = document.getElementById('reg-category');
+        const participantFields = document.getElementById('participant-fields');
+
+        categorySelect.addEventListener('change', function() {
+            if (this.value === 'peserta') {
+                participantFields.style.display = 'block';
+            } else {
+                participantFields.style.display = 'none';
+            }
+        });
+
+        const targetDate = new Date("April 19, 2026 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<h2 class='font-display text-2xl text-sage-800'>Acara Sedang Berlangsung</h2>";
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        const audio = document.getElementById('bg-music');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.classList.replace('fa-pause', 'fa-music');
+            } else {
+                audio.play();
+                musicIcon.classList.replace('fa-music', 'fa-pause');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        const regForm = document.getElementById('registration-form');
+        const regSuccess = document.getElementById('reg-success');
+
+        regForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('reg-name').value;
+            const branch = document.getElementById('reg-branch').value;
+            const wa = document.getElementById('reg-wa').value;
+            const cat = document.getElementById('reg-category').value;
+            
+            // Target numbers
+            let targetNumber = (cat === 'peserta') ? "6285724250573" : "6282119408505";
+            
+            let message = `Halo Admin, saya ingin mendaftar Pameran Bonsai Nasional 2026:\n\n` +
+                          `Nama: ${name}\n` +
+                          `Cabang: ${branch}\n` +
+                          `WhatsApp: ${wa}\n` +
+                          `Kategori: ${cat === 'peserta' ? 'PESERTA KONTES' : 'BURSA / STAN'}`;
+            
+            if(cat === 'peserta') {
+                const bClass = document.getElementById('reg-class').value;
+                const bSize = document.getElementById('reg-size').value;
+                const count = document.getElementById('reg-count').value;
+                
+                message += `\nKelas: ${bClass}`;
+                message += `\nUkuran: ${bSize}`;
+                message += `\nJumlah Pohon: ${count}`;
+            }
+
+            message += `\n\n_Catatan: Saya akan segera mengirimkan bukti transfer pendaftaran._`;
+
+            regForm.classList.add('hidden');
+            regSuccess.classList.remove('hidden');
+
+            setTimeout(() => {
+                window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
